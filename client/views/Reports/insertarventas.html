@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!--Regular Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!--Responsive Extension Datatables CSS-->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../publlic/style/style.css">
+
+<body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
+    <div class="md:w-4/1 xl:w-5/5  mx-auto px-20">
+        <div class="bg-red-600 bg-opacity-100 text-gray-100">
+            <p class="text-xl mt-6 p-2 h-10  text-center">Sanitas Insertar Ventas</p>
+        </div>
+        <div id='recipients1' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+            <div id="vars" style="text-align:center">
+                <label class="font-black">Fecha de la venta</label>
+                <input type="Date" name='fini' id='fini'>
+                <label for="" class="font-black">Hora de la venta</label>
+                <input type="time" name='hventa' id='hventa'>
+                <label for="" class="font-black"></label>Tipo de venta</label>
+                <select id="tipoventa">
+                    <option selected></option>
+                     <option value="PREMIUM">PREMIUM</option>
+                     <option value="MILLENIUM">MILLENIUM</option>
+                </select>
+                <label class="font-black">Póliza</label>
+                <input  type="text"  name='poliza' id='poliza'>
+                <label class="font-black">Teléfono</label>
+                <input  type="phone"  name='telefono' id='telefono'>
+                <label class="font-black">Asegurados</label>
+                <input  type="number"  name='asegurados' id='asegurados'>
+                <label class="font-black">Remote:id</label>
+                <input  type="text"  name='remoteid' id='remoteid'>
+                <label class="font-black">Origen</label>
+                <input  type="text"  name='origen' id='origen'>
+                <label class="font-black">ADG</label>
+                <input  type="text"  name='adg' id='adg'>
+                <br> <br> <br>
+                <button class="p-2 pl-5 pr-5 bg-blue-800 text-gray-100 text-lg rounded-lg 
+                 focus:border-4 border-blue-300 hover:bg-red-500 shadow-2xl" onclick="insertventas()">Guardar ventas</button>
+            </div><br><br>
+            <div id='tablefranjas'>
+            <div class="flex ml-2 mb-3">
+            	<div>
+            	<img src="../../aseets/images/marktel.png" style="width:100px;"  class="mt-2">
+            	</div> 
+            	<div>
+            	<img src="../../aseets/images/sanitas_logo.png" style="width:80px;"  class="mb-5 ml-2 rounded-md">
+            	</div> 
+            </div>
+                  <!----<div class="bg-white shadow-lg p-4 px-12 justify-center" id="myChart" ></div>-->
+            </div>
+            </div>
+  
+        </div>
+    </div>
+   <script src="../script.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"></script>
+
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script>
+       $(document).ready(function() {
+    $('#franjas').dataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+    </script>
+    <!--PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+     <!--Gráficas -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+</body>
+
+</html>

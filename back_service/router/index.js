@@ -119,7 +119,32 @@ router.get('/api/infoactividad',  (req, res) => {
 }
 });
 
+//API INSERTAR VENTAS
+router.get('/api/insertarventas',  (req, res) => {
 
+	console.log("api/insertarventas")
+
+    const { fini, hventa,tipoventa, poliza,telefono,asegurados,remoteid,origen,adg } = req.query;
+
+
+     try {
+     conexion.query(`CALL sanitas_valencia_sp4_insertar_ventas ("${fecha_i}","${hventa}","${tipoventa}","${poliza}",
+     "${telefono}","${asegurados}","${remoteid}","${origen}","${adg}")`, (error, filas) => {
+        if (error) {
+            throw error;
+            console.log(conexion.query)
+        } else {
+            res.send(filas[0]);
+            console.log(conexion.query)
+       
+            
+        }
+    })
+
+     } catch (error) {
+    
+}
+});
 
 //API  CDM SERVICIO
 router.get('/api/cdmserviciodia',  (req, res) => {

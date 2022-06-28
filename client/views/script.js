@@ -1135,6 +1135,40 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+//**********************************************/
+/**INFORME ACTIVIDAD **/
+//**********************************************/
+
+function insertventas() {
+
+    console.log("entro /api/insertarventas")
+
+   // const url = 'http://172.20.0.80:4567/api/insertarventas';
+    const url = 'http://localhost:4567/api/insertarventas';
+    
+    const param1 = $("#fini").val()
+    const param2 = $("#hventa").val()
+    const param3 = $("#tipoventa").val()
+    const param4 = $("#poliza").val()
+    const param5 = $("#telefono").val()
+    const param6 = $("#asegurados").val()
+    const param7 = $("#remoteid").val()
+    const param8 = $("#origen").val()
+    const param9 = $("#adg").val()
+
+
+    const urln = url + "?fecha_i=" + param1 + "&hventa=" + param2 + "&tipoventa=" + param3 + "&poliza=" + param4
+    + "&telefono=" + param5  + "&asegurados=" + param6  + "&remoteid=" + param7  + "&origen=" + param8
+    + "&adg=" + param9
+    
+    $(document).ready(function (req, res) {
+
+        console.log(res)
+        console.log(urln)
+
+
+})
+};
 
 //***************************************//
 //********CDMagente.html**************//
