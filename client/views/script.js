@@ -740,6 +740,252 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+//**********************************************/
+/**INFORME ACTIVIDAD **/
+//**********************************************/
+
+function callinfoactividad() {
+
+    console.log("entro /api/infoactividad")
+
+   // const url = 'http://172.20.0.80:4567/api/infoactividad';
+    const url = 'http://localhost:4567/api/infoactividad';
+    
+    const param1 = $("#campania").val()
+    const param2 = $("#fini").val()
+    const param3 = $("#ffin").val()
+    const param4 = $("#bbdd").val()
+  
+    const urln = url + "?campania=" + param1 + "&fecha_i=" + param2 + "&fecha_f=" + param3 + "&bbdd=" + param4
+    
+    $(document).ready(function (req, res) {
+
+
+        console.log(urln)
+
+        $('#infoactividad').DataTable({
+            ajax: {
+                url: urln,
+                dataSrc: ''
+
+            },
+            columns: [
+                
+                 { data: "TIPIFICACION" },
+                 { data: "TOTALES" },
+                 { data: "CAMPANIA" },
+                 { data: "COREGISTROS_EGENTIC" },
+                 { data: "COREGISTROS_MEDIAADGO" },
+                 { data: "COREGISTROS_ADSALSA" },
+                 { data: "COREGISTROS_BICLAMEDIA" },
+                 { data: "SPONSOR_BICLAMEDIA" },
+                 { data: "COREGISTROS_TAGADA" },
+                 { data: "SPONSOR_TAGADA" },
+                 { data: "CONHIJO_TAGADA" },
+                 { data: "COREGISTROS_BBDDFRIA" },
+                 { data: "COREGISTROS_DATACENTRIC" },
+                 { data: "COREGISTROS_STARTEND" }
+                
+            ],
+            responsive: true,
+            "lengthMenu": [[16, -1], [16, "All"]]
+        }).columns.adjust()
+            .responsive.recalc();
+    })
+
+    //Elimino la tabla user en cada llamaada para que se pueda recargar el dato
+
+    $("#infoactividad").dataTable().fnDestroy();
+
+var chart = document.querySelector('#myChart')
+var options = {
+     colors: ['#0EB8FC', '#2BFC0E', '#FCD40E', '#FC120E'],
+
+    series: [{
+        name: 'EMITIDAS',
+        type: 'area',
+        data: ['']
+    }, {
+        name: 'EMITIDAS_ATENDIDAS',
+        type: 'line',
+        data: ['']
+    }, {
+        name: 'VENTAS',
+        type: 'line',
+        data: ['']
+    }, {
+        name: 'ABANDONADAS',
+        type: 'line',
+        data: ['']
+    }
+
+],
+    chart: {
+        height: 900,
+        type: 'line',
+
+        zoom: {
+            enabled: false
+        }
+    },
+    stroke: {
+        curve: 'smooth'
+    },
+    fill: {
+        type: 'solid',
+        opacity: [0.05, 1],
+    },
+    labels:  [''],
+    markers: {
+        size: 7
+    },
+    yaxis: [
+        {
+
+            title: {
+                text: `Llamadas ${param2}`,
+                fontStyle: "bold"
+            },
+        } 
+    ],
+    tooltip: {
+        shared: true,
+        intersect: false,
+        y: {
+            formatter: function(y) {
+                if (typeof y !== "undefined") {
+                    return y.toFixed(0) + " llamadas";
+                }
+                return y;
+            }
+        }
+    }
+};
+
+window.chart3 = new ApexCharts(chart, options);
+//let url='http://172.20.0.80:4567/api/franjas?fecha_i=2022-01-01&fecha_f=2022-02-13&campana=&service='
+
+fetch(urln)
+.then (response => response.json() )
+.then (datos => mostrar(datos))
+.catch (error => error)
+
+
+const mostrar = (datos)=>{
+    datos.map(element => {
+        console.log(options)
+
+        options['labels'].push(element.FRANJA)
+        options['series'][0].data.push(element.EMITIDAS)
+        options['series'][1].data.push(element.EMITIDAS_ATENDIDAS)
+        options['series'][2].data.push(element.VENTAS)
+        options['series'][3].data.push(element.ABANDONADAS)
+      
+     
+    });
+
+    options['labels'].pop();
+    options['labels'].shift();
+    options['series'][0].data.pop();
+    options['series'][0].data.shift();
+    options['series'][1].data.pop();
+    options['series'][1].data.shift();
+    options['series'][2].data.pop();
+    options['series'][2].data.shift();
+    options['series'][3].data.pop();
+    options['series'][3].data.shift();
+
+
+
+   // console.log(options)
+   window.chart3.render();
+   window.chart3.delete();
+}
+
+}
+
+/**FUNCION PARA EXPORTAR CSV DE LA TABLA **/
+
+function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], { type: "text/csv" });
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}
+
+function exportTableToCSV(filename) {
+    var csv = [];
+    var rows = document.querySelectorAll("table tr");
+
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+
+        for (var j = 0; j < cols.length; j++)
+            row.push(cols[j].innerText);
+
+        csv.push(row.join(";"));
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+
+//**********************************************/
+/**FUNCION PARA EXPORTAR HACER PDF DE LA TABLA **/
+//**********************************************/
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Escuchamos el click del botón
+    const $boton = document.querySelector("#btnpdf");
+
+    const fecha = new Date().toISOString().slice(0, 10);
+
+    $boton.addEventListener("click", () => {
+        const $elementoParaConvertir = document.querySelector("#tablefranjas"); // <-- Aquí puedes elegir cualquier elemento del DOM
+        html2pdf()
+            .set({
+                margin: 0,
+
+                filename: `Sanitas_Costes_Telefonicos_${fecha}.pdf`,
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+
+                },
+                html2canvas: {
+                    scale: 5, // A mayor escala, mejores gráficos, pero más peso
+                    letterRendering: true,
+                },
+                jsPDF: {
+                    unit: "in",
+                    format: "a1",
+                    orientation: 'landscape' // landscape o portrait
+                }
+            })
+            .from($elementoParaConvertir)
+            .save()
+            .catch(err => console.log(err));
+    });
+});
 
 //***************************************//
 //********CDMagente.html**************//

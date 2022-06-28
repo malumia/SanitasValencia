@@ -93,6 +93,33 @@ router.get('/api/costestelefonicos',  (req, res) => {
 });
 
 
+//API INFO ACTIVIDAD
+router.get('/api/infoactividad',  (req, res) => {
+
+	console.log("api/infoactividad")
+
+    const { campania, fecha_i, fecha_f,bbdd } = req.query;
+
+
+     try {
+     conexion.query(`CALL sanitas_valencia_sp2_info_actividad ("${campania}","${fecha_i}","${fecha_f}","${bbdd}")`, (error, filas) => {
+        if (error) {
+            throw error;
+            console.log(conexion.query)
+        } else {
+            res.send(filas[0]);
+            console.log(conexion.query)
+       
+            
+        }
+    })
+
+     } catch (error) {
+    
+}
+});
+
+
 
 //API  CDM SERVICIO
 router.get('/api/cdmserviciodia',  (req, res) => {

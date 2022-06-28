@@ -25,37 +25,30 @@
                 <label for="" class="font-black">Fecha Fin</label>
                 <input type="Date" name='ffin' id='ffin'>
                 <label for="" class="font-black">Campaña</label>
-                <select id="campana">
+                <select id="campania">
                     <option value=""></option>
-                    <option value="Orange Fijo Fase IV ">Orange Fijo Fase IV</option>
-                    <option value="Orange fijo fase III ">Orange fijo fase III</option>
-                    <option value="Orange fijo fase II ">Orange fijo fase II</option>
-                    <option value="TRAMO 2">TRAMO 2</option>
-                    <option value="TRAMO 1">TRAMO 1</option>
-                    <option value="ORANGE_PORTADOS ">ORANGE_PORTADOS</option>
-                    <option value="FASE IV">FASE IV</option>
-                    <option value="FASE III">FASE III</option>
-                    <option value="FASE II ORANGE">FASE II ORANGE</option>
-                    <option value="CARTERIZACIÓN">CARTERIZACIÓN</option>
-                    <option value="JAZZTEL TRAMO 2">JAZZTEL TRAMO 2</option>
-                    <option value="JAZZTEL TRAMO 1">JAZZTEL TRAMO 1</option>
-                    <option value="JAZZTEL PRUEBA">JAZZTEL PRUEBA</option>
-                    <option value="JAZZTEL FASE IV">JAZZTEL FASE IV</option>
-                    <option value="JAZZTEL FASE III">JAZZTEL FASE III</option>
-                    <option value="JAZZTEL CARGA TOTAL">JAZZTEL CARGA TOTAL</option>
-                    <option value="CARTERIZACIÓN JAZZTEL">CARTERIZACIÓN JAZZTEL</option>
+                    <option value="TODAS">TODAS</option>
+                    <option value="COREGISTROS ">Coregistros </option>
+                    <option value="Sanitas 1 ">Sanitas 1</option>
+                    <option value="Sanitas 2">Sanitas 2</option>
+                    <option value="Sanitas 3">Sanitas 3</option>
+                    <option value="Sanitas 4">Sanitas 4</option>
+                    <option value="Sanitas 5">Sanitas 5</option>
+                    <option value="Sanitas 6">Sanitas 6</option>
+                    <option value="Sanitas 7">Sanitas 7</option>
+                    <option value="Registros en blanco">Registros en blanco</option>
+                    <option value="SANITAS1_RECICLADOS">SANITAS1_RECICLADOS</option>
                 </select>
-                <label for="" class="font-black">Servicio</label>
-                <select id="service">
+                <label for="" class="font-black">BBDD</label>
+                <select id="bbdd">
                     <option selected></option>
-                     <option value="ORANGE">ORANGE</option>
-                     <option value="JAZZTEL">JAZZTEL</option>
-                     <option value="FIJO">FIJO</option>
+                     <option value="SMARKIO">SMARKIO</option>
+                     <option value="FRIA">SMARKIO</option>
+                     <option value="TODAS">TODAS</option>
                 </select>
-                <label class="font-black">DDi</label>
-                <input  type="text"  max="9" name='ddi' id='ddi'>
+               
                 <button class="p-2 pl-5 pr-5 bg-blue-800 text-gray-100 text-lg rounded-lg 
-                 focus:border-4 border-blue-300 hover:bg-red-500 shadow-2xl" onclick="callcdmservicio()">Mostrar
+                 focus:border-4 border-blue-300 hover:bg-red-500 shadow-2xl" onclick="callinfoactividad()">Mostrar
                     Resultados</button>
             </div><br><br>
             <div id='tablecdmservice'>
@@ -77,32 +70,29 @@
             <button class="p-2 pl-5 pr-5 bg-red-500 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300 mt-2"
                 id='btnpdf3'>PDF</button>
             </div>
-                <table id="cdmservicio"class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <table id="infoactividad"class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
                     <thead>
                         <tr class="bg-indigo-900 bg-opacity-100 text-white">
-                            <th data-priority="1">SERVICE</th>
-                            <th data-priority="2">DDI</th>
-                            <th data-priority="3">CAMPAIN</th>
-                            <th data-priority="4">FECHA</th>
-                            <th data-priority="5">EMITIDAS</th>
-                            <th data-priority="6">EMITIDAS ATENDIDAS</th>
-                            <th data-priority="7">% ATENDIDAS</th>
-                            <th data-priority="8">BUSY</th>
-                            <th data-priority="9">DROP</th>
-                            <th data-priority="10">NO ANSWER</th>
-                            <th data-priority="11">INVAL NUMBER</th>
-                            <th data-priority="12">VOICE EMAIL</th>
-                            <th data-priority="13">NETWORKFAIL</th>
-                            <th data-priority="14">% BUSY</th>
-                            <th data-priority="15">% DROP</th>
-                            <th data-priority="16">% NO ANSWER</th>
-                            <th data-priority="17">% INVAL NUMBER</th>
-                            <th data-priority="18">% VOICE EMAIL</th>
-                            <th data-priority="19">% NETWORKFAIL</th>                                                                          
+                            <th data-priority="1">MOTIVOS DE NO INTERESA - CU</th>
+                            <th data-priority="2">TOTALES</th>
+                            <th data-priority="3">CAMPAÑA</th>
+                            <th data-priority="4">COREGISTROS_EGENTIC</th>
+                            <th data-priority="5">CON HIJOS - EGENTIC</th>
+                            <th data-priority="6">COREGISTROS - MEDIAADGO</th>
+                            <th data-priority="7">COREGISTROS - ADSALSA</th>
+                            <th data-priority="8">COREGISTROS - BICLAMEDIA</th>
+                            <th data-priority="9">SPONSOR - BICLAMEDIA</th>
+                            <th data-priority="10">COREGISTROS - TAGADA</th>
+                            <th data-priority="11">SPONSOR - TAGADA</th>
+                            <th data-priority="12">CON HIJO - TAGADA</th>
+                            <th data-priority="13">COREGISTROS - BBDD FRIA</th>
+                            <th data-priority="14">COREGISTROS - DATACENTRIC</th>
+                            <th data-priority="15">COREGISTROS - START-END</th>
+                                                                                                 
                         </tr>
                     </thead>
                 </table>
-                <div class="bg-white shadow-lg p-4 px-12 justify-center" id="myChart" ></div>
+               <!--- <div class="bg-white shadow-lg p-4 px-12 justify-center" id="myChart" ></div>-->
             </div>
         </div>
     </div>
@@ -111,7 +101,22 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"></script>
+
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script>
+       $(document).ready(function() {
+    $('#franjas').dataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+    </script>
     <!--PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
         integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
