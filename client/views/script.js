@@ -495,7 +495,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     unit: "in",
                     format: "a1",
                     orientation: 'landscape' // landscape o portrait
-                }
+                } 
                 
             })
             .from($elementoParaConvertir)
