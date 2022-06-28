@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <!--Regular Datatables CSS-->
+    <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <!--Responsive Extension Datatables CSS-->
+    <link href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.dataTables.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../publlic/style/style.css">
+
+<body class="bg-gray-100 text-gray-900 tracking-wider leading-normal" >
+    <div class="md:w-4/1 xl:w-5/5  mx-auto px-20" >
+        <div class="bg-red-500 bg-opacity-100 text-gray-100 text-center">
+            <p class="text-xl mt-6 p-2 h-10  text-center">Orange CDM Tipis Dia</p>
+        </div>
+        <div id='recipients1' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+            <div id="vars">
+                <label class="font-black">Fecha Inicio</label>
+                <input type="Date" name='fini' id='fini'>
+                <label for="" class="font-black">Fecha Fin</label>
+                <input type="Date" name='ffin' id='ffin'>
+                <label for="" class="font-black">Campaña</label>
+                <select id="campana">
+                    <option value=""></option>
+                    <option value="Orange Fijo Fase IV ">Orange Fijo Fase IV</option>
+                    <option value="Orange fijo fase III ">Orange fijo fase III</option>
+                    <option value="Orange fijo fase II ">Orange fijo fase II</option>
+                    <option value="TRAMO 2">TRAMO 2</option>
+                    <option value="TRAMO 1">TRAMO 1</option>
+                    <option value="ORANGE_PORTADOS ">ORANGE_PORTADOS</option>
+                    <option value="FASE IV">FASE IV</option>
+                    <option value="FASE III">FASE III</option>
+                    <option value="FASE II ORANGE">FASE II ORANGE</option>
+                    <option value="CARTERIZACIÓN">CARTERIZACIÓN</option>
+                    <option value="JAZZTEL TRAMO 2">JAZZTEL TRAMO 2</option>
+                    <option value="JAZZTEL TRAMO 1">JAZZTEL TRAMO 1</option>
+                    <option value="JAZZTEL PRUEBA">JAZZTEL PRUEBA</option>
+                    <option value="JAZZTEL FASE IV">JAZZTEL FASE IV</option>
+                    <option value="JAZZTEL FASE III">JAZZTEL FASE III</option>
+                    <option value="JAZZTEL CARGA TOTAL">JAZZTEL CARGA TOTAL</option>
+                    <option value="CARTERIZACIÓN JAZZTEL">CARTERIZACIÓN JAZZTEL</option>
+                </select>
+                <label for="" class="font-black">Servicio</label>
+                <select id="service">
+                    <option selected></option>
+                     <option value="ORANGE">ORANGE</option>
+                     <option value="JAZZTEL">JAZZTEL</option>
+                     <option value="FIJO">FIJO</option>
+                </select>
+                <label class="font-black">DDi</label>
+                <input  type="text"  max="9" name='ddi' id='ddi'>
+                <button class="p-2 pl-5 pr-5 bg-blue-800 text-gray-100 text-lg rounded-lg 
+                 focus:border-4 border-blue-300 hover:bg-red-500 shadow-2xl" onclick="callcdmtipis()">Mostrar
+                    Resultados</button>
+            </div><br><br>
+            <div id='tablecdmservice'>
+                  <div class="flex ml-2 mb-3">
+                <div>
+                <img src="../../aseets/images/marktel.png" style="width:100px;"  class="mt-2">
+                </div> 
+                <div>
+                <img src="../../aseets/images/orange.jpg" style="width:80px;"  class="mb-5 ml-2 rounded-md">
+                </div> 
+            </div>
+            <div class="mb-6">
+            <button
+                class="p-2 pl-5 pr-5 bg-gray-800 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300 mt-2"
+                onclick="window.location='../dashboardSanitas.html'">Home</button>
+            <button
+                class="p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg focus:border-4 border-blue-300 mt-2 "
+                onclick="exportTableToCSV('CDM_Servicio.csv')">CSV</button>
+            <button class="p-2 pl-5 pr-5 bg-red-500 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300 mt-2"
+                id='btnpdf3'>PDF</button>
+            </div>
+                <table id="cdmtipis" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                    <thead>
+                        <tr class="bg-indigo-900 bg-opacity-100 text-white">
+                            <th data-priority="1">SERVICE</th>
+                            <th data-priority="2">DDI</th>
+                            <th data-priority="3">CAMPAIN</th>
+                            <th data-priority="4">FECHA</th>
+                            <th data-priority="5">EMITIDAS</th>
+                            <th data-priority="6">ATENDIDAS</th>
+                            <th data-priority="7">p% ATENDIDAS</th>
+                            <th data-priority="8">PROMESA</th>
+                            <th data-priority="9">PROMESAANT</th>
+                            <th data-priority="10">RECLAMACION</th>
+                            <th data-priority="11">TLF ERR</th>
+                            <th data-priority="12">VLL TERCERO</th>
+                            <th data-priority="13">VLL TITULAR</th>
+                            <th data-priority="14">CORRIENTE</th>
+                            <th data-priority="15">C SINPROMESA</th>
+                            <th data-priority="16">NEG</th>
+                            <th data-priority="17">CONTESTADOR</th>
+                            <th data-priority="18">ENTORNO FAM</th>
+                            <th data-priority="19">ENTORNO LAB</th>
+                            <th data-priority="20">CANCEL</th>
+                            <th data-priority="21">INCLOGIN</th>
+                            <th data-priority="22">AUTOWRP</th>                                                        
+                        </tr>
+                    </thead>
+                </table>
+                <div class="bg-white shadow-lg p-4 px-12 justify-center" id="myChart" ></div>
+            </div>
+        </div>
+    </div>
+    <script src="../script.js"></script>
+    <!-- jQuery -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <!--Datatables -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <!--PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+        integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</body>
+
+</html>

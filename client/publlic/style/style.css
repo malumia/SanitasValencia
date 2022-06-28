@@ -1,0 +1,197 @@
+	
+
+html, body
+{
+    height: 100%;
+}
+#Header
+{
+    width: 960px;
+    height: 150px;
+}
+#Content
+{
+    height: 100%;
+    width: 960px;
+}	/*Overrides for Tailwind CSS */
+		.divx {
+			background-image: url("./marktel.png");			
+		}
+
+				/*Overrides for Tailwind CSS */
+				.divx2 {
+					background-image: url("./marktel.png");			
+				}
+				
+		
+		/*Form fields*/
+		.dataTables_wrapper select,
+		.dataTables_wrapper .dataTables_filter input {
+			color: #4a5568; 			/*text-gray-700*/
+			padding-left: 1rem; 		/*pl-4*/
+			padding-right: 1rem; 		/*pl-4*/
+			padding-top: .5rem; 		/*pl-2*/
+			padding-bottom: .5rem; 		/*pl-2*/
+			line-height: 1.25; 			/*leading-tight*/
+			border-width: 2px; 			/*border-2*/
+			border-radius: .25rem; 		
+			border-color: #edf2f7; 		/*border-gray-200*/
+			background-color: #edf2f7; 	/*bg-gray-200*/
+		}
+
+		/*Row Hover*/
+		table.dataTable.hover tbody tr:hover, table.dataTable.display tbody tr:hover {
+			background-color: #ebf4ff;	/*bg-indigo-100*/
+		}
+		
+		/*Pagination Buttons*/
+		.dataTables_wrapper .dataTables_paginate .paginate_button		{
+			font-weight: 700;				/*font-bold*/
+			border-radius: .25rem;			/*rounded*/
+			border: 1px solid transparent;	/*border border-transparent*/
+		}
+		
+		/*Pagination Buttons - Current selected */
+		.dataTables_wrapper .dataTables_paginate .paginate_button.current	{
+			color: #fff !important;				/*text-white*/
+			box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06); 	/*shadow*/
+			font-weight: 700;					/*font-bold*/
+			border-radius: .25rem;				/*rounded*/
+			background: #667eea !important;		/*bg-indigo-500*/
+			border: 1px solid transparent;		/*border border-transparent*/
+		}
+
+		/*Pagination Buttons - Hover */
+		.dataTables_wrapper .dataTables_paginate .paginate_button:hover		{
+			color: #fff !important;				/*text-white*/
+			box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);	 /*shadow*/
+			font-weight: 700;					/*font-bold*/
+			border-radius: .25rem;				/*rounded*/
+			background: #ea66df !important;		/*bg-indigo-500*/
+			border: 1px solid transparent;		/*border border-transparent*/
+		}
+		
+		/*Add padding to bottom border */
+		table.dataTable.no-footer {
+			border-bottom: 1px solid #f0e2ee;	/*border-b-1 border-gray-300*/
+			margin-top: 0.75em;
+			margin-bottom: 0.75em;
+		}
+		
+		/*Change colour of responsive icon*/
+		table.dataTable.dtr-inline.collapsed>tbody>tr>td:first-child:before, table.dataTable.dtr-inline.collapsed>tbody>tr>th:first-child:before {
+			background-color: #667eea !important; /*bg-indigo-500*/
+		}
+		
+
+					
+			.btn{
+				background: #031d46;
+				border-bottom: 2px solid #f64a06;
+				border-radius: 12px;
+				box-shadow: 6px 6px 5px rgb(221, 205, 205);
+				color: #fff;
+				cursor: pointer; 
+				font-family: 'Raleway', Arial, Helvetica;
+				font-size: 20px;
+				text-shadow: 2px 2px 4px rgb(241, 94, 8);
+				height: px;
+				padding: 20px  20px;
+				transition: all 1s ease 0s;
+				width: 200px;
+				margin: 20px;
+			}
+			.btn:hover{
+				background: #fb7101;
+			}
+			.btn:active {
+				box-shadow: 2px 2px 2px rgb(243, 235, 235), 0px 0px 35px 0px #00b7f8;
+				border-bottom:1px solid #0045A6;
+				text-shadow:  0px 0px 5px #fff, 0px 0px 5px #fff;
+				transform: translateY(4px);
+				transition: all 0.1s ease 0s;
+
+			}
+
+			#franjas #cdmagente #cdmservicio:eq(0) {
+				text-align: center;
+			}
+			#franjas  {
+				text-align: center;
+				margin: 0 auto;
+				display:block;
+				overflow:auto;
+				font-size: 10px;
+			}
+
+			#franjas th {padding:5px 10px}
+
+			#loginagente {
+				text-align: center;
+				font-weight: bold;
+			}
+
+			#cdrtelefonico {
+				text-align: center;
+				font-weight: bold;
+			}
+
+			#franjas {
+				text-align: center;
+				font-weight: bold;
+			}
+
+			 #tipificacion {
+				text-align: center;
+				font-weight: bold;
+			}
+	
+	 		 #cdmservicio {
+				text-align: center;
+				font-weight: bold;
+			}
+
+			#cdmservicio {
+				text-align: center;
+				font-weight: bold;
+			}
+
+			#cdmtipis {
+				text-align: center;
+				font-weight: bold;
+			}
+
+				
+	 		 #loginservicio {
+				text-align: center;
+				font-weight: bold;
+			}
+
+			
+			#cdmagente{
+				text-align: center;
+				font-weight: bold;
+			}
+
+			#myChart {
+				
+				font-weight: bold;
+			}
+
+			#divorangepng{
+
+				background-image: url('../../publlic/img/sanitas_fondo.jpg');
+				background-repeat: no-repeat; 
+				background-position: center center;
+				background-size: cover;
+				background-position: center;
+			}
+
+			#divh1{
+				font-family: 'Raleway', Arial, Helvetica;
+				font-size: 35px;
+				margin-left: 50px;
+				font-weight: 900;
+				text-shadow: 2px 2px 3px rgb(26, 2, 8);
+
+			}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../publlic/style/style.css">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- This is an example component -->
+
+  <div class="flex flex-row h-full">
+    <!-- Sidebar -->
+    <nav class="bg-gray-900 w-20  justify-between flex flex-col"  >
+      <div class="mt-10 mb-10">
+        <a href="#">
+          <img src="../aseets/images/sanitas.jpg" class="rounded-full w-12 h-12 mb-3 mx-auto" />
+        </a>
+        <div class="mt-10">
+        </div>
+      </div>
+    </nav>
+    <div class="px-20 py-4 text-gray-700 bg-gray-300 h-screen w-screen items-center bg-gradient-to-r from-blue-200 via-gray-100 to-gray" >
+      <!-- Content -->
+      <img class="ml-12" src="../aseets/images/marktel.png" style="width:100px;">
+      <div class="mt-6" id='divh1'>
+        <h1><a style="color:rgb(52, 89, 253);">Sanitas</a> Reporting </h1>
+      </div>
+      <div id='divorangepng' class="mt-20 pb-10 ml-10 rounded-2xl bg-gray-100 border-2 border-red-400 grid grid-cols-2 shadow-2xl">
+        <div class="justify-center items-center ">
+          <button class="btn" onclick="window.location='./Reports/franjas.html'">Informe Franjas</button>
+          <button class="btn" onclick="window.location='./Reports/ventas.html'">Informe Ventas</button>
+          <button class="btn" onclick="window.location='./Reports/costestelefonicos.html'">Costes telefónicos</button>
+          <button class="btn" onclick="window.location='./Reports/cdmservicio.html'">CDM Telefonico</button>
+          <button class="btn" onclick="window.location='./Reports/cdmagente.html'">CDM Agente</button>
+          <button class="btn">New Report</button>
+          <button class="btn" >New Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
