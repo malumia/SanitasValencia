@@ -216,7 +216,7 @@ document.addEventListener("DOMContentLoaded", () => {
             .set({
                 margin: 0,
 
-                filename: `Orange_Franjas_${fecha}.pdf`,
+                filename: `Sanitas_Franjas_${fecha}.pdf`,
                 image: {
                     type: 'jpeg',
                     quality: 0.98
@@ -1140,35 +1140,331 @@ document.addEventListener("DOMContentLoaded", () => {
 //**********************************************/
 
 function insertventas() {
-
+   
     console.log("entro /api/insertarventas")
 
    // const url = 'http://172.20.0.80:4567/api/insertarventas';
     const url = 'http://localhost:4567/api/insertarventas';
     
-    const param1 = $("#fini").val()
-    const param2 = $("#hventa").val()
-    const param3 = $("#tipoventa").val()
-    const param4 = $("#poliza").val()
-    const param5 = $("#telefono").val()
-    const param6 = $("#asegurados").val()
-    const param7 = $("#remoteid").val()
-    const param8 = $("#origen").val()
-    const param9 = $("#adg").val()
+    const date=new Date();
+    let year = date.getFullYear();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let hora = date.getHours()+":"+date.getMinutes();
+    console.log(hora)
+    if(day<10)
+    day='0'+day; //agrega cero si el menor de 10
+    if(month<10)
+    month='0'+month //agrega cero si el menor de 10
+    let factual=year+"-"+month+"-"+day+" "+hora;
 
 
-    const urln = url + "?fecha_i=" + param1 + "&hventa=" + param2 + "&tipoventa=" + param3 + "&poliza=" + param4
-    + "&telefono=" + param5  + "&asegurados=" + param6  + "&remoteid=" + param7  + "&origen=" + param8
-    + "&adg=" + param9
+    const param1 = factual
+    const param2 = $("#fini").val()
+    console.log("fecha"+param2)
+    const param3 = $("#hventa").val()
+    const param4 = $("#tipoventa").val()
+    const param5 = $("#poliza").val()
+    const param6 = $("#telefono").val()
+    const param7 = $("#asegurados").val()
+    const param8 = $("#remoteid").val()
+    const param9 = $("#origen").val()
+    const param10 = $("#adg").val()
+    
+    
+
+
+    const urln = url + "?fecha_actual=" + param1 + "&fini=" + param2 + "&hventa=" + param3 + "&tipoventa=" + param4 + "&poliza=" + param5
+    + "&telefono=" + param6  + "&asegurados=" + param7  + "&remoteid=" + param8  + "&origen=" + param9
+    + "&adg=" + param10
     
     $(document).ready(function (req, res) {
 
-        console.log(res)
         console.log(urln)
 
+        $('#insertarventas').DataTable({
+            ajax: {
+                url: urln,
+                dataSrc: ''
+            },
+            columns: [
+                 { data: "FECHA" },
+                 { data: "FECHA_VENTA" },
+                 { data: "HORA_VENTA" },
+                 { data: "TIPO_VENTA" },
+                 { data: "POLIZA" },
+                 { data: "TELEFONO" },
+                 { data: "ASEGURADOS" },
+                 { data: "REMOTE_ID" },
+                 { data: "ORIGEN" },
+                 { data: "ADG" }
+            ],
+            responsive: true,
+            "lengthMenu": [[50,100, -1], [300,100, "All"]]
+        }).columns.adjust()
+            .responsive.recalc();
+    })
 
-})
+    //Elimino la tabla user en cada llamaada para que se pueda recargar el dato
+
+    $("#insertarventas").dataTable().fnDestroy();
+
+
+
+
+    
+
+
 };
+
+//**********************************************/
+/**VENTAS **/
+//**********************************************/
+
+function callactividadventas() {
+
+    console.log("entro /api/actividadventas")
+
+   // const url = 'http://172.20.0.80:4567/api/actividadventas';
+    const url = 'http://localhost:4567/api/actividadventas';
+    
+    const param1 = $("#campania").val()
+    const param2 = $("#fini").val()
+    const param3 = $("#ffin").val()
+    const param4 = $("#bbdd").val()
+  
+    const urln = url + "?&campania=" + param1 + "&fecha_i=" + param2 + "&fecha_f=" + param3 + "&bbdd=" + param4
+    
+    $(document).ready(function (req, res) {
+
+
+        console.log(urln)
+
+        $('#franjas').DataTable({
+            ajax: {
+                url: urln,
+                dataSrc: ''
+
+            },
+            columns: [
+                
+                 { data: "DESGLOSE DE VENTAS" },
+                 { data: "TOTALES" },
+                 { data: "CAMPAÑA" },
+                 { data: "COREGISTROS - EGENTIC" },
+                 { data: "CON HIJOS - EGENTIC" },
+                 { data: "COREGISTROS - MEDIAADGO" },
+                 { data: "COREGISTROS - ADSALSA" },
+                 { data: "COREGISTROS - BICLAMEDIA" },
+                 { data: "SPONSOR - BICLAMEDIA" },
+                 { data: "COREGISTROS - TAGADA" },
+                 { data: "SPONSOR - TAGADA" },
+                 { data: "CON HIJO - TAGADA" },
+                 { data: "COREGISTROS - BBDD FRIA" },
+                 { data: "COREGISTROS - DATACENTRICL" }
+                
+            ],
+            responsive: true,
+            "lengthMenu": [[16, -1], [16, "All"]]
+        }).columns.adjust()
+            .responsive.recalc();
+    })
+
+    //Elimino la tabla user en cada llamaada para que se pueda recargar el dato
+
+    $("#franjas").dataTable().fnDestroy();
+
+var chart = document.querySelector('#myChart')
+var options = {
+     colors: ['#0EB8FC', '#2BFC0E', '#FCD40E', '#FC120E'],
+
+    series: [{
+        name: 'EMITIDAS',
+        type: 'area',
+        data: ['']
+    }, {
+        name: 'EMITIDAS_ATENDIDAS',
+        type: 'line',
+        data: ['']
+    }, {
+        name: 'VENTAS',
+        type: 'line',
+        data: ['']
+    }, {
+        name: 'ABANDONADAS',
+        type: 'line',
+        data: ['']
+    }
+
+],
+    chart: {
+        height: 900,
+        type: 'line',
+
+        zoom: {
+            enabled: false
+        }
+    },
+    stroke: {
+        curve: 'smooth'
+    },
+    fill: {
+        type: 'solid',
+        opacity: [0.05, 1],
+    },
+    labels:  [''],
+    markers: {
+        size: 7
+    },
+    yaxis: [
+        {
+
+            title: {
+                text: `Llamadas ${param2}`,
+                fontStyle: "bold"
+            },
+        } 
+    ],
+    tooltip: {
+        shared: true,
+        intersect: false,
+        y: {
+            formatter: function(y) {
+                if (typeof y !== "undefined") {
+                    return y.toFixed(0) + " llamadas";
+                }
+                return y;
+            }
+        }
+    }
+};
+
+window.chart3 = new ApexCharts(chart, options);
+//let url='http://172.20.0.80:4567/api/franjas?fecha_i=2022-01-01&fecha_f=2022-02-13&campana=&service='
+
+fetch(urln)
+.then (response => response.json() )
+.then (datos => mostrar(datos))
+.catch (error => error)
+
+
+const mostrar = (datos)=>{
+    datos.map(element => {
+        console.log(options)
+
+        options['labels'].push(element.FRANJA)
+        options['series'][0].data.push(element.EMITIDAS)
+        options['series'][1].data.push(element.EMITIDAS_ATENDIDAS)
+        options['series'][2].data.push(element.VENTAS)
+        options['series'][3].data.push(element.ABANDONADAS)
+      
+     
+    });
+
+    options['labels'].pop();
+    options['labels'].shift();
+    options['series'][0].data.pop();
+    options['series'][0].data.shift();
+    options['series'][1].data.pop();
+    options['series'][1].data.shift();
+    options['series'][2].data.pop();
+    options['series'][2].data.shift();
+    options['series'][3].data.pop();
+    options['series'][3].data.shift();
+
+
+
+   // console.log(options)
+   window.chart3.render();
+   window.chart3.delete();
+}
+
+}
+
+/**FUNCION PARA EXPORTAR CSV DE LA TABLA **/
+
+function downloadCSV(csv, filename) {
+    var csvFile;
+    var downloadLink;
+
+    // CSV file
+    csvFile = new Blob([csv], { type: "text/csv" });
+
+    // Download link
+    downloadLink = document.createElement("a");
+
+    // File name
+    downloadLink.download = filename;
+
+    // Create a link to the file
+    downloadLink.href = window.URL.createObjectURL(csvFile);
+
+    // Hide download link
+    downloadLink.style.display = "none";
+
+    // Add the link to DOM
+    document.body.appendChild(downloadLink);
+
+    // Click download link
+    downloadLink.click();
+}
+
+function exportTableToCSV(filename) {
+    var csv = [];
+    var rows = document.querySelectorAll("table tr");
+
+    for (var i = 0; i < rows.length; i++) {
+        var row = [], cols = rows[i].querySelectorAll("td, th");
+
+        for (var j = 0; j < cols.length; j++)
+            row.push(cols[j].innerText);
+
+        csv.push(row.join(";"));
+    }
+
+    // Download CSV file
+    downloadCSV(csv.join("\n"), filename);
+}
+
+//**********************************************/
+/**FUNCION PARA EXPORTAR HACER PDF DE LA TABLA **/
+//**********************************************/
+
+document.addEventListener("DOMContentLoaded", () => {
+    // Escuchamos el click del botón
+    const $boton = document.querySelector("#btnpdf");
+
+    const fecha = new Date().toISOString().slice(0, 10);
+
+    $boton.addEventListener("click", () => {
+        const $elementoParaConvertir = document.querySelector("#tablefranjas"); // <-- Aquí puedes elegir cualquier elemento del DOM
+        html2pdf()
+            .set({
+                margin: 0,
+
+                filename: `Sanitas_Ventas_${fecha}.pdf`,
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+
+                },
+                html2canvas: {
+                    scale: 5, // A mayor escala, mejores gráficos, pero más peso
+                    letterRendering: true,
+                },
+                jsPDF: {
+                    unit: "in",
+                    format: "a1",
+                    orientation: 'landscape' // landscape o portrait
+                } 
+                
+            })
+            .from($elementoParaConvertir)
+            .save()
+            .catch(err => console.log(err));
+    });
+});
+
 
 //***************************************//
 //********CDMagente.html**************//

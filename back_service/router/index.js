@@ -124,11 +124,12 @@ router.get('/api/insertarventas',  (req, res) => {
 
 	console.log("api/insertarventas")
 
-    const { fini, hventa,tipoventa, poliza,telefono,asegurados,remoteid,origen,adg } = req.query;
-
+  
+    const {fecha_actual,fini, hventa,tipoventa, poliza,telefono,asegurados,remoteid,origen,adg } = req.query;
+    
 
      try {
-     conexion.query(`CALL sanitas_valencia_sp4_insertar_ventas ("${fecha_i}","${hventa}","${tipoventa}","${poliza}",
+     conexion.query(`CALL sanitas_valencia_sp4_insertar_ventas ("${fecha_actual}","${fini}","${hventa}","${tipoventa}","${poliza}",
      "${telefono}","${asegurados}","${remoteid}","${origen}","${adg}")`, (error, filas) => {
         if (error) {
             throw error;
@@ -145,143 +146,25 @@ router.get('/api/insertarventas',  (req, res) => {
     
 }
 });
+//API ACTIVIDAD VENTAS
+router.get('/api/actividadventas',  (req, res) => {
 
-//API  CDM SERVICIO
-router.get('/api/cdmserviciodia',  (req, res) => {
+	console.log("api/actividadventas")
 
-    const { fecha_i, fecha_f, campana, service,ddi } = req.query;
+  
+    const {fini, ffin,campania,bbdd } = req.query;
+    
 
-    //console.log(fecha_i)
      try {
-     conexion.query(`CALL orange_sp1_dias_calls("${fecha_i}","${fecha_f}","${campana}", "${service}", "${ddi}")`, (error, filas) => {
+     conexion.query(`CALL sanitas_valencia_sp5_info_ventas_conteo ("${campania}","${fini}","${ffin}","${bbdd}")`, (error, filas) => {
         if (error) {
             throw error;
             console.log(conexion.query)
         } else {
             res.send(filas[0]);
             console.log(conexion.query)
-
-        }
-    })
-
-     } catch (error) {
-    
-}
-});
-
-
-
-//API CDM SERVICIO
-router.get('/api/cdmagente',  (req, res) => {
-
-    const { fecha_i, fecha_f, campana, service,ddi } = req.query;
-
-	console.log("api/cdmagente")
-     try {
-     conexion.query(`CALL orange_sp4_dias_tipi_agente("${fecha_i}","${fecha_f}","${campana}", "${service}", "${ddi}")`, (error, filas) => {
-        if (error) {
-            throw error;
-            console.log(conexion.query)
-        } else {
-            res.send(filas[0]);
-            console.log(conexion.query)
-
-        }
-    })
-
-     } catch (error) {
-    
-}
-});
-
-//API CDM SERVICIO
-router.get('/api/cdmtipisdia',  (req, res) => {
-
-    const { fecha_i, fecha_f, campana, service,ddi } = req.query;
-
-	console.log("api/cdmtipisdia")
-     try {
-     conexion.query(`CALL orange_sp3_dias_tipif("${fecha_i}","${fecha_f}","${campana}", "${service}", "${ddi}")`, (error, filas) => {
-        if (error) {
-            throw error;
-            console.log(conexion.query)
-        } else {
-            res.send(filas[0]);
-            console.log(conexion.query)
-
-        }
-    })
-
-     } catch (error) {
-    
-}
-});
-
-
-
-//API CDM SERVICIO
-router.get('/api/loginagente',  (req, res) => {
-
-    const { fecha_i, fecha_f, campana } = req.query;
-
-    //console.log(fecha_i)
-     try {
-     conexion.query(`CALL orange_TIEMPOS_AGENTES_F("${fecha_i}","${fecha_f}","${campana}")`, (error, filas) => {
-        if (error) {
-            throw error;
-            console.log(conexion.query)
-        } else {
-            res.send(filas[0]);
-            console.log(conexion.query)
-
-        }
-    })
-
-     } catch (error) {
-    
-}
-});
-
-
-//API LOGIN 
-router.get('/api/loginservicio',  (req, res) => {
-
-    const { fecha_i, fecha_f, campana } = req.query;
-
- try {
-    
-     conexion.query(`CALL orange_TIEMPOS_SERVICIO("${fecha_i}","${fecha_f}","${campana}")`, (error, filas) => {
-        if (error) {
-            throw error;
-            console.log(conexion.query)
-        } else {
-            res.send(filas[0]);
-            console.log(conexion.query)
-
-        }
-    })
-
-     } catch (error) {
-    
-}
-});
-
-//API CDR TELEFONICO
-
-router.get('/api/cdrtelefonico',  (req, res) => {
-
-    const { fecha_i, fecha_f } = req.query;
-
-    //console.log(fecha_i)
-     try {
-     conexion.query(`CALL orange_CDR_TELEFONICO("${fecha_i}","${fecha_f}")`, (error, filas) => {
-        if (error) {
-            throw error;
-            console.log(conexion.query)
-        } else {
-            res.send(filas[0]);
-            console.log(conexion.query)
-
+       
+            
         }
     })
 

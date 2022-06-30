@@ -16,7 +16,7 @@
 <body class="bg-gray-100 text-gray-900 tracking-wider leading-normal">
     <div class="md:w-4/1 xl:w-5/5  mx-auto px-20">
         <div class="bg-red-600 bg-opacity-100 text-gray-100">
-            <p class="text-xl mt-6 p-2 h-10  text-center">Sanitas Llamadas por Franjas</p>
+            <p class="text-xl mt-6 p-2 h-10  text-center">Sanitas Actividad Ventas</p>
         </div>
         <div id='recipients1' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
             <div id="vars">
@@ -27,7 +27,7 @@
                 <label for="" class="font-black">Campaña</label>
                 <select id="campania">
                     <option value=""></option>
-                    <option value="TODAS">Todas</option>
+                    <option value="TODAS">TODAS</option>
                     <option value="COREGISTROS ">Coregistros </option>
                     <option value="Sanitas 1 ">Sanitas 1</option>
                     <option value="Sanitas 2">Sanitas 2</option>
@@ -39,8 +39,15 @@
                     <option value="Registros en blanco">Registros en blanco</option>
                     <option value="SANITAS1_RECICLADOS">SANITAS1_RECICLADOS</option>
                 </select>
+                <label for="" class="font-black">BBDD</label>
+                <select id="bbdd">
+                    <option selected></option>
+                     <option value="SMARKIO">SMARKIO</option>
+                     <option value="FRIA">SMARKIO</option>
+                     <option value="TODAS">TODAS</option>
+                </select>
                 <button class="p-2 pl-5 pr-5 bg-blue-800 text-gray-100 text-lg rounded-lg 
-                 focus:border-4 border-blue-300 hover:bg-red-500 shadow-2xl" onclick="callfranjas()">Mostrar
+                 focus:border-4 border-blue-300 hover:bg-red-500 shadow-2xl" onclick="callactividadventas()">Mostrar
                     Resultados</button>
             </div><br><br>
             <div id='tablefranjas'>
@@ -58,7 +65,7 @@
                 onclick="window.location='../dashboardSanitas.html'">Home</button>
             <button
                 class="p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg focus:border-4 border-blue-300 mt-2 "
-                onclick="exportTableToCSV('sanitas_Franjas.csv')">CSV</button>
+                onclick="exportTableToCSV('ventas_Franjas.csv')">CSV</button>
             <button class="p-2 pl-5 pr-5 bg-red-500 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300 mt-2"
                 id='btnpdf'>PDF</button>
             </div>
@@ -66,19 +73,25 @@
                     <thead>
                         <tr class="bg-indigo-900 bg-opacity-100 text-white">
                            
-                            <th data-priority="1">FECHA</th>
-                            <th data-priority="2">FRANJA</th>
-                            <th data-priority="3">EMITIDAS</th>
-                            <th data-priority="4">EMI ATENDIDAS</th>
-                            <th data-priority="5">VENTAS</th>
-                            <th data-priority="6">ABANDONADAS</th>
-                            <th data-priority="7">% CONTACTACIÓN</th>
-                           
-                            
+                            <th data-priority="1">DESGLOSE DE VENTAS</th>
+                            <th data-priority="2">TOTALES</th>
+                            <th data-priority="3">CAMPAÑA</th>
+                            <th data-priority="4">COREGISTROS - EGENTIC</th>
+                            <th data-priority="5">CON HIJOS - EGENTIC</th>
+                            <th data-priority="6">COREGISTROS - MEDIAADGO</th>
+                            <th data-priority="7">COREGISTROS - ADSALSA</th>
+                            <th data-priority="8">COREGISTROS - BICLAMEDIA</th>
+                            <th data-priority="9">SPONSOR - BICLAMEDIA</th>
+                            <th data-priority="10">COREGISTROS - TAGADA</th>
+                            <th data-priority="11">SPONSOR - TAGADA</th>
+                            <th data-priority="12">CON HIJO - TAGADA</th>
+                            <th data-priority="13">COREGISTROS - BBDD FRIA</th>
+                            <th data-priority="14">COREGISTROS - DATACENTRIC</th>
+
                         </tr>
                     </thead>
                 </table>
-                  <div class="bg-white shadow-lg p-4 px-12 justify-center" id="myChart" ></div>
+                  <!----<div class="bg-white shadow-lg p-4 px-12 justify-center" id="myChart" ></div>-->
             </div>
             </div>
   
@@ -89,7 +102,22 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"></script>
+
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script>
+       $(document).ready(function() {
+    $('#franjas').dataTable( {
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
+        },
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    } );
+} );
+    </script>
     <!--PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
         integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="

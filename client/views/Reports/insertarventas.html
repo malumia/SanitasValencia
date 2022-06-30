@@ -20,28 +20,29 @@
         </div>
         <div id='recipients1' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
             <div id="vars" style="text-align:center">
+                <input type="hidden" name='factual' id='factual' >
                 <label class="font-black">Fecha de la venta</label>
-                <input type="Date" name='fini' id='fini'>
+                <input type="Date" name='fini' id='fini' required="true">
                 <label for="" class="font-black">Hora de la venta</label>
-                <input type="time" name='hventa' id='hventa'>
+                <input type="time" name='hventa' id='hventa' required>
                 <label for="" class="font-black"></label>Tipo de venta</label>
                 <select id="tipoventa">
-                    <option selected></option>
+                    <option selected required></option>
                      <option value="PREMIUM">PREMIUM</option>
                      <option value="MILLENIUM">MILLENIUM</option>
                 </select>
                 <label class="font-black">Póliza</label>
-                <input  type="text"  name='poliza' id='poliza'>
+                <input  type="text"  name='poliza' id='poliza' required="true">
                 <label class="font-black">Teléfono</label>
-                <input  type="phone"  name='telefono' id='telefono'>
+                <input  type="phone"  name='telefono' id='telefono' required>
                 <label class="font-black">Asegurados</label>
-                <input  type="number"  name='asegurados' id='asegurados'>
+                <input  type="number"  name='asegurados' id='asegurados' required>
                 <label class="font-black">Remote:id</label>
-                <input  type="text"  name='remoteid' id='remoteid'>
+                <input  type="text"  name='remoteid' id='remoteid' required>
                 <label class="font-black">Origen</label>
-                <input  type="text"  name='origen' id='origen'>
+                <input  type="text"  name='origen' id='origen'required>
                 <label class="font-black">ADG</label>
-                <input  type="text"  name='adg' id='adg'>
+                <input  type="text"  name='adg' id='adg'required>
                 <br> <br> <br>
                 <button class="p-2 pl-5 pr-5 bg-blue-800 text-gray-100 text-lg rounded-lg 
                  focus:border-4 border-blue-300 hover:bg-red-500 shadow-2xl" onclick="insertventas()">Guardar ventas</button>
@@ -58,12 +59,34 @@
                   <!----<div class="bg-white shadow-lg p-4 px-12 justify-center" id="myChart" ></div>-->
             </div>
             </div>
+            <div class="mb-6">
+                <button
+                    class="p-2 pl-5 pr-5 bg-gray-800 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300 mt-2"
+                    onclick="window.location='../dashboardSanitas.html'">Home</button>
+                
+            <table id="insertarventas"class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em;">
+                <thead>
+                    
+                    <tr class="bg-indigo-900 bg-opacity-100 text-white">
+                        <th data-priority="1">FECHA</th>  
+                        <th data-priority="2">FECHA_VENTA</th>  
+                        <th data-priority="3">HORA_VENTA</th>  
+                        <th data-priority="4">TIPO_VENTA</th>  
+                        <th data-priority="4">POLIZA</th>  
+                        <th data-priority="5">TELEFONO</th>  
+                        <th data-priority="6">SEGURADOS</th>  
+                        <th data-priority="7">REMOTE_ID</th> 
+                        <th data-priority="8">ORIGEN</th>    
+                        <th data-priority="9">ADG</th>                                                                       
+                    </tr>
+                </thead>
+            </table>
   
         </div>
     </div>
    <script src="../script.js"></script>
     <!-- jQuery -->
-    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+     <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <!--Datatables -->
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/plug-ins/1.12.1/i18n/es-ES.json"></script>
@@ -71,7 +94,7 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
        $(document).ready(function() {
-    $('#franjas').dataTable( {
+    $('#insertarventas').dataTable( {
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },
@@ -81,6 +104,8 @@
         ]
     } );
 } );
+
+
     </script>
     <!--PDF -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
