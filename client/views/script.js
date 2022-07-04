@@ -252,14 +252,14 @@ function callventas() {
     const param1 = $("#fini").val()
     const param2 = $("#ffin").val()
   
-    const urln = url + "?&fecha_i=" + param1 + "&fecha_f=" + param2
+    const urln = url + "?fecha_i=" + param1 + "&fecha_f=" + param2
     
     $(document).ready(function (req, res) {
 
 
         console.log(urln)
 
-        $('#franjas').DataTable({
+        $('#ventas').DataTable({
             ajax: {
                 url: urln,
                 dataSrc: ''
@@ -311,7 +311,7 @@ function callventas() {
 
     //Elimino la tabla user en cada llamaada para que se pueda recargar el dato
 
-    $("#franjas").dataTable().fnDestroy();
+    $("#ventas").dataTable().fnDestroy();
 
 var chart = document.querySelector('#myChart')
 var options = {
@@ -476,7 +476,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fecha = new Date().toISOString().slice(0, 10);
 
     $boton.addEventListener("click", () => {
-        const $elementoParaConvertir = document.querySelector("#tablefranjas"); // <-- Aquí puedes elegir cualquier elemento del DOM
+        const $elementoParaConvertir = document.querySelector("#tableventas"); // <-- Aquí puedes elegir cualquier elemento del DOM
         html2pdf()
             .set({
                 margin: 0,
@@ -518,14 +518,14 @@ function callcostestelefonicos() {
     const param1 = $("#fini").val()
     const param2 = $("#ffin").val()
   
-    const urln = url + "?&fecha_i=" + param1 + "&fecha_f=" + param2
+    const urln = url + "?fecha_i=" + param1 + "&fecha_f=" + param2
     
     $(document).ready(function (req, res) {
 
 
         console.log(urln)
 
-        $('#franjas').DataTable({
+        $('#costestelefonicos').DataTable({
             ajax: {
                 url: urln,
                 dataSrc: ''
@@ -547,7 +547,7 @@ function callcostestelefonicos() {
 
     //Elimino la tabla user en cada llamaada para que se pueda recargar el dato
 
-    $("#franjas").dataTable().fnDestroy();
+    $("#costestelefonicos").dataTable().fnDestroy();
 
 var chart = document.querySelector('#myChart')
 var options = {
@@ -712,7 +712,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fecha = new Date().toISOString().slice(0, 10);
 
     $boton.addEventListener("click", () => {
-        const $elementoParaConvertir = document.querySelector("#tablefranjas"); // <-- Aquí puedes elegir cualquier elemento del DOM
+        const $elementoParaConvertir = document.querySelector("#tablecostestelefonicos"); // <-- Aquí puedes elegir cualquier elemento del DOM
         html2pdf()
             .set({
                 margin: 0,
@@ -770,11 +770,13 @@ function callinfoactividad() {
 
             },
             columns: [
-                
+
+                 { data: "ID" },
                  { data: "TIPIFICACION" },
                  { data: "TOTALES" },
                  { data: "CAMPANIA" },
                  { data: "COREGISTROS_EGENTIC" },
+                 { data: "CONHIJOS_EGENTIC" },
                  { data: "COREGISTROS_MEDIAADGO" },
                  { data: "COREGISTROS_ADSALSA" },
                  { data: "COREGISTROS_BICLAMEDIA" },
@@ -1233,14 +1235,14 @@ function callactividadventas() {
     const param3 = $("#ffin").val()
     const param4 = $("#bbdd").val()
   
-    const urln = url + "?&campania=" + param1 + "&fecha_i=" + param2 + "&fecha_f=" + param3 + "&bbdd=" + param4
+    const urln = url + "?campania=" + param1 + "&fecha_i=" + param2 + "&fecha_f=" + param3 + "&bbdd=" + param4
     
     $(document).ready(function (req, res) {
 
 
         console.log(urln)
 
-        $('#franjas').DataTable({
+        $('#actividadventas').DataTable({
             ajax: {
                 url: urln,
                 dataSrc: ''
@@ -1248,20 +1250,20 @@ function callactividadventas() {
             },
             columns: [
                 
-                 { data: "DESGLOSE DE VENTAS" },
+                 { data: "DESGLOSE" },
                  { data: "TOTALES" },
-                 { data: "CAMPAÑA" },
-                 { data: "COREGISTROS - EGENTIC" },
-                 { data: "CON HIJOS - EGENTIC" },
-                 { data: "COREGISTROS - MEDIAADGO" },
-                 { data: "COREGISTROS - ADSALSA" },
-                 { data: "COREGISTROS - BICLAMEDIA" },
-                 { data: "SPONSOR - BICLAMEDIA" },
-                 { data: "COREGISTROS - TAGADA" },
-                 { data: "SPONSOR - TAGADA" },
-                 { data: "CON HIJO - TAGADA" },
-                 { data: "COREGISTROS - BBDD FRIA" },
-                 { data: "COREGISTROS - DATACENTRICL" }
+                 { data: "CAMPANIA" },
+                 { data: "COREGISTROS_EGENTIC" },
+                 { data: "CONHIJOS_EGENTIC" },
+                 { data: "COREGISTROS_MEDIAADGO" },
+                 { data: "COREGISTROS_ADSALSA" },
+                 { data: "COREGISTROS_BICLAMEDIA" },
+                 { data: "SPONSOR_BICLAMEDIA" },
+                 { data: "COREGISTROS_TAGADA" },
+                 { data: "SPONSOR_TAGADA" },
+                 { data: "CONHIJO_TAGADA" },
+                 { data: "COREGISTROS_BBDDFRIA" },
+                 { data: "COREGISTROS_DATACENTRIC" }
                 
             ],
             responsive: true,
@@ -1272,7 +1274,7 @@ function callactividadventas() {
 
     //Elimino la tabla user en cada llamaada para que se pueda recargar el dato
 
-    $("#franjas").dataTable().fnDestroy();
+    $("#actividadventas").dataTable().fnDestroy();
 
 var chart = document.querySelector('#myChart')
 var options = {

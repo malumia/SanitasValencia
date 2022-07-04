@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router();
-const conexion = require('../utilss/cnxMySql')
+const conexion = require('../utilss/cnxMySql');
+const fetch  = require('fetch');
 
 router.get('/', function (req, res) {
     res.send('Ruta INICIO');
@@ -152,17 +153,19 @@ router.get('/api/actividadventas',  (req, res) => {
 	console.log("api/actividadventas")
 
   
-    const {fini, ffin,campania,bbdd } = req.query;
+    const {campania,f_ini, f_fin,bbdd } = req.query;
     
 
      try {
-     conexion.query(`CALL sanitas_valencia_sp5_info_ventas_conteo ("${campania}","${fini}","${ffin}","${bbdd}")`, (error, filas) => {
+     conexion.query(`CALL sanitas_valencia_sp5_info_ventas_conteo ("${campania}","${f_ini}","${f_fin}","${bbdd}")`,  (error, filas) => {
         if (error) {
             throw error;
             console.log(conexion.query)
         } else {
+            
             res.send(filas[0]);
             console.log(conexion.query)
+          
        
             
         }

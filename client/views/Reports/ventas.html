@@ -28,7 +28,7 @@
                  focus:border-4 border-blue-300 hover:bg-red-500 shadow-2xl" onclick="callventas()">Mostrar
                     Resultados</button>
             </div><br><br>
-            <div id='tablefranjas'>
+            <div id='tableventas'>
             <div class="flex ml-2 mb-3">
             	<div>
             	<img src="../../aseets/images/marktel.png" style="width:100px;"  class="mt-2">
@@ -43,11 +43,11 @@
                 onclick="window.location='../dashboardSanitas.html'">Home</button>
             <button
                 class="p-2 pl-5 pr-5 bg-blue-500 text-gray-100 text-lg rounded-lg focus:border-4 border-blue-300 mt-2 "
-                onclick="exportTableToCSV('ventas_Franjas.csv')">CSV</button>
+                onclick="exportTableToCSV('Sanitas_Ventas.csv')">CSV</button>
             <button class="p-2 pl-5 pr-5 bg-red-500 text-gray-100 text-lg rounded-lg focus:border-4 border-red-300 mt-2"
                 id='btnpdf'>PDF</button>
             </div>
-                <table id="franjas" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em; ">
+                <table id="ventas" class="stripe hover" style="width:100%; padding-top: 1em;  padding-bottom: 1em; ">
                     <thead>
                         <tr class="bg-indigo-900 bg-opacity-100 text-white">
                            
@@ -105,7 +105,7 @@
     <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
     <script>
        $(document).ready(function() {
-    $('#franjas').dataTable( {
+    $('#ventas').dataTable( {
         "language": {
             "url": "//cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json"
         },

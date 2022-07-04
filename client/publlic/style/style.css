@@ -116,7 +116,7 @@ html, body
 			#franjas #cdmagente #cdmservicio:eq(0) {
 				text-align: center;
 			}
-			#franjas,#infoactividad  {
+			#franjas,#infoactividad,#ventas, #costestelefonicos,#actividadventas  {
 				text-align: center;
 				margin: 0 auto;
 				display:block;
@@ -124,9 +124,9 @@ html, body
 				font-size: 10px;
 			}
 
-			#franjas th,#infoactividad th {padding:5px 10px}
+			#franjas th,#infoactividad th,#ventas th, #costestelefonicos th,#actividadventas th{padding:5px 10px}
 
-			#loginagente {
+			#loginagente { 
 				text-align: center;
 				font-weight: bold;
 			}
