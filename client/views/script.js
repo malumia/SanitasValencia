@@ -1267,7 +1267,8 @@ function callactividadventas() {
                 
             ],
             responsive: true,
-            "lengthMenu": [[16, -1], [16, "All"]]
+            "lengthMenu": [[16, -1], [16, "All"]],
+            "sort": false //mirar como ordenar la tabla
         }).columns.adjust()
             .responsive.recalc();
     })
@@ -1276,110 +1277,7 @@ function callactividadventas() {
 
     $("#actividadventas").dataTable().fnDestroy();
 
-var chart = document.querySelector('#myChart')
-var options = {
-     colors: ['#0EB8FC', '#2BFC0E', '#FCD40E', '#FC120E'],
 
-    series: [{
-        name: 'EMITIDAS',
-        type: 'area',
-        data: ['']
-    }, {
-        name: 'EMITIDAS_ATENDIDAS',
-        type: 'line',
-        data: ['']
-    }, {
-        name: 'VENTAS',
-        type: 'line',
-        data: ['']
-    }, {
-        name: 'ABANDONADAS',
-        type: 'line',
-        data: ['']
-    }
-
-],
-    chart: {
-        height: 900,
-        type: 'line',
-
-        zoom: {
-            enabled: false
-        }
-    },
-    stroke: {
-        curve: 'smooth'
-    },
-    fill: {
-        type: 'solid',
-        opacity: [0.05, 1],
-    },
-    labels:  [''],
-    markers: {
-        size: 7
-    },
-    yaxis: [
-        {
-
-            title: {
-                text: `Llamadas ${param2}`,
-                fontStyle: "bold"
-            },
-        } 
-    ],
-    tooltip: {
-        shared: true,
-        intersect: false,
-        y: {
-            formatter: function(y) {
-                if (typeof y !== "undefined") {
-                    return y.toFixed(0) + " llamadas";
-                }
-                return y;
-            }
-        }
-    }
-};
-
-window.chart3 = new ApexCharts(chart, options);
-//let url='http://172.20.0.80:4567/api/franjas?fecha_i=2022-01-01&fecha_f=2022-02-13&campana=&service='
-
-fetch(urln)
-.then (response => response.json() )
-.then (datos => mostrar(datos))
-.catch (error => error)
-
-
-const mostrar = (datos)=>{
-    datos.map(element => {
-        console.log(options)
-
-        options['labels'].push(element.FRANJA)
-        options['series'][0].data.push(element.EMITIDAS)
-        options['series'][1].data.push(element.EMITIDAS_ATENDIDAS)
-        options['series'][2].data.push(element.VENTAS)
-        options['series'][3].data.push(element.ABANDONADAS)
-      
-     
-    });
-
-    options['labels'].pop();
-    options['labels'].shift();
-    options['series'][0].data.pop();
-    options['series'][0].data.shift();
-    options['series'][1].data.pop();
-    options['series'][1].data.shift();
-    options['series'][2].data.pop();
-    options['series'][2].data.shift();
-    options['series'][3].data.pop();
-    options['series'][3].data.shift();
-
-
-
-   // console.log(options)
-   window.chart3.render();
-   window.chart3.delete();
-}
 
 }
 

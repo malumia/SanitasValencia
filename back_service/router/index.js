@@ -153,11 +153,11 @@ router.get('/api/actividadventas',  (req, res) => {
 	console.log("api/actividadventas")
 
   
-    const {campania,f_ini, f_fin,bbdd } = req.query;
+    const {campania,fecha_i, fecha_f,bbdd } = req.query;
     
 
      try {
-     conexion.query(`CALL sanitas_valencia_sp5_info_ventas_conteo ("${campania}","${f_ini}","${f_fin}","${bbdd}")`,  (error, filas) => {
+     conexion.query(`CALL sanitas_valencia_sp5_info_ventas_conteo ("${campania}","${fecha_i}","${fecha_f}","${bbdd}")`,  (error, filas) => {
         if (error) {
             throw error;
             console.log(conexion.query)

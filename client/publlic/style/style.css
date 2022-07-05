@@ -124,7 +124,7 @@ html, body
 				font-size: 10px;
 			}
 
-			#franjas th,#infoactividad th,#ventas th, #costestelefonicos th,#actividadventas th{padding:5px 10px}
+			#franjas th,#infoactividad th,#ventas th, #costestelefonicos th,#actividadventas{padding:5px 10px}
 
 			#loginagente { 
 				text-align: center;
