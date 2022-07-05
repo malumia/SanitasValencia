@@ -790,7 +790,8 @@ function callinfoactividad() {
                 
             ],
             responsive: true,
-            "lengthMenu": [[16, -1], [16, "All"]]
+            "lengthMenu": [[16, -1], [16, "All"]],
+            "sort": false //mirar como ordenar la tabla
         }).columns.adjust()
             .responsive.recalc();
     })
