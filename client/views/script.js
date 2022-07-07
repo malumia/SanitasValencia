@@ -39,7 +39,7 @@ function callfranjas() {
                 
             ],
             responsive: true,
-            "lengthMenu": [[16, -1], [16, "All"]]
+            "lengthMenu": [[30, -1], [30, "All"]]
         }).columns.adjust()
             .responsive.recalc();
     })
@@ -57,7 +57,7 @@ var options = {
         type: 'area',
         data: ['']
     }, {
-        name: 'EMITIDAS_ATENDIDAS',
+        name: 'EMITIDAS ATENDIDAS',
         type: 'line',
         data: ['']
     }, {
@@ -94,7 +94,7 @@ var options = {
         {
 
             title: {
-                text: `Llamadas ${param3}`,
+                text: `${param3}`,
                 fontStyle: "bold"
             },
         } 
@@ -105,7 +105,7 @@ var options = {
         y: {
             formatter: function(y) {
                 if (typeof y !== "undefined") {
-                    return y.toFixed(0) + " llamadas";
+                    return y.toFixed(0) + " ";
                 }
                 return y;
             }
@@ -162,7 +162,8 @@ function downloadCSV(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    //csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -285,7 +286,7 @@ function callventas() {
                  { data: "CP" },
                  { data: "TIPO ASEGURADO" },
                  { data: "CITA" },
-                 { data: "ORIGEN(CORREGISTROS)" },
+                 { data: "ORIGEN" },
                  { data: "PROVINCIA" },
                  { data: "COMPLEMENTO FARMACIA" },
                  { data: "LOPD" },
@@ -299,12 +300,12 @@ function callventas() {
                  { data: "TIPO DE VENTA" },
                  { data: "FECHA ACTIVACION" },
                  { data: "FECHA RECIBO" },
-                 { data: "ORIGEN" }
+                 { data: "ORIGEN(CORREGISTROS)" }
                
                 
             ],
             responsive: true,
-            "lengthMenu": [[16, -1], [16, "All"]]
+            "lengthMenu": [[50, -1], [50, "All"]]
         }).columns.adjust()
             .responsive.recalc();
     })
@@ -427,7 +428,7 @@ function downloadCSV(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -540,7 +541,7 @@ function callcostestelefonicos() {
                 
             ],
             responsive: true,
-            "lengthMenu": [[16, -1], [16, "All"]]
+            "lengthMenu": [[30, -1], [30, "All"]]
         }).columns.adjust()
             .responsive.recalc();
     })
@@ -663,7 +664,7 @@ function downloadCSV(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -790,7 +791,7 @@ function callinfoactividad() {
                 
             ],
             responsive: true,
-            "lengthMenu": [[16, -1], [16, "All"]],
+            "lengthMenu": [[30, -1], [30, "All"]],
             "sort": false //mirar como ordenar la tabla
         }).columns.adjust()
             .responsive.recalc();
@@ -846,7 +847,7 @@ var options = {
         {
 
             title: {
-                text: `Llamadas ${param2}`,
+                text: ` ${param2}`,
                 fontStyle: "bold"
             },
         } 
@@ -914,7 +915,7 @@ function downloadCSV(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -1061,7 +1062,7 @@ function downloadCSV74(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -1268,7 +1269,7 @@ function callactividadventas() {
                 
             ],
             responsive: true,
-            "lengthMenu": [[16, -1], [16, "All"]],
+            "lengthMenu": [[30, -1], [30, "All"]],
             "sort": false //mirar como ordenar la tabla
         }).columns.adjust()
             .responsive.recalc();
@@ -1289,7 +1290,7 @@ function downloadCSV(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -1572,7 +1573,7 @@ function downloadCSV74(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -1855,7 +1856,7 @@ function downloadCSV74(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -1986,7 +1987,7 @@ function downloadCSV5(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -2111,7 +2112,7 @@ function downloadCSV5(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
@@ -2248,7 +2249,7 @@ function downloadCSV7(csv, filename) {
     var downloadLink;
 
     // CSV file
-    csvFile = new Blob([csv], { type: "text/csv" });
+    csvFile = new Blob(["\uFEFF"+csv], { type: "text/csv" });
 
     // Download link
     downloadLink = document.createElement("a");
